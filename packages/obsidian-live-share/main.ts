@@ -1,7 +1,4 @@
-import {
-	Plugin,
-	MarkdownView,
-} from "obsidian";
+import { Plugin, MarkdownView } from "obsidian";
 import { LiveShareSettingsTab } from "./settings";
 
 import LiveShareClient from "./client";
@@ -20,6 +17,7 @@ const DEFAULT_SETTINGS: LiveShareSettings = {
 export default class LiveSharePlugin extends Plugin {
 	settings: LiveShareSettings;
 	client: LiveShareClient = null;
+	userEdited: boolean;
 
 	async onload() {
 		await this.loadSettings();
@@ -48,9 +46,14 @@ export default class LiveSharePlugin extends Plugin {
 			if (view !== null) {
 				const filePath = view.file.path;
 				const data = view.getViewData();
-				this.client.onFileModified(filePath, data);
+
+				//If we're edited since the last time the file was modified
+				if (this.userEdited) {
+					this.userEdited = false;
+					this.client.onFileModified(filePath, data);
+				}
 			}
-		}
+		};
 
 		const getEphemeralState = () => {
 			const view = this.app.workspace.getActiveViewOfType(MarkdownView);
@@ -67,13 +70,17 @@ export default class LiveSharePlugin extends Plugin {
 		};
 
 		this.addSettingTab(new LiveShareSettingsTab(this.app, this));
+
+		this.registerDomEvent(document, 'keydown', (evt: KeyboardEvent) => {
+			//When we type something set edited to true
+			this.userEdited = true;
+		});
+
 		this.registerInterval(
 			window.setInterval(() => getEphemeralState(), 1500)
 		);
 
-		this.registerInterval(
-			window.setInterval(() => getFileText(), 1500)
-		);
+		this.registerInterval(window.setInterval(() => getFileText(), 1500));
 	}
 
 	onunload() {

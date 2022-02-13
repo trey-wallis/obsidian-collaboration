@@ -141,6 +141,7 @@ export default class LiveShareClient {
 
 	async onFileModified(filePath: string, data: string) {
 		if (this.connectionStatus === CONNECTION_STATUS.CONNECTED) {
+			//If the user hasn't changed any text, then don't emit any data
 			const diff = getFileDiff(this.oldFileData, data);
 			if (diff.length > 0) {
 				this.oldFileData = data;
