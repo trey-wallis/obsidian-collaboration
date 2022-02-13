@@ -1,0 +1,15 @@
+.obsidian-live-share__connection-status-bar--disconnected {
+	color: red;
+}
+
+.obsidian-live-share__connection-status-bar--connected {
+	color: green;
+}
+
+.obsidian-live-share__connection-status-bar--reconnecting {
+	color: yellow;
+}
+
+.obsidian-live-share__connection-status-bar--connecting {
+	color: yellow;
+}
