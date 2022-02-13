@@ -94,7 +94,8 @@ export default class LiveShareClient {
 		});
 
 		this.socket.on("file_data", (data) => {
-			console.log("Received file data: %s", data);
+			console.log("Received file data");
+			console.log(data);
 			writeFileData(
 				`${this.plugin.settings.vaultPath}/${data.filePath}`,
 				this.oldFileData,

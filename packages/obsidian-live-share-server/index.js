@@ -37,7 +37,7 @@ io.on("connection", (socket) => {
   socket.on("cursor_move", (data) => {
     console.log("Received cursor move: %s", data);
     //socket.emit("cursor_move", data);
-    socket.broadcast.emit("file_data", data);
+    socket.broadcast.emit("cursor_move", data);
   });
 
   //Broadcast disconnect to everyone
