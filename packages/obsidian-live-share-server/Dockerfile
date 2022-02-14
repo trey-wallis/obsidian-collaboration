@@ -9,6 +9,5 @@ RUN npm ci --only=production
 COPY . .
 
 ENTRYPOINT ["node"]
-EXPOSE 8000
 
 CMD ["index.js"]

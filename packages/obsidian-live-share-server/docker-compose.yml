@@ -3,3 +3,5 @@ services:
   node:
     build: .
     restart: always
+    ports:
+    - 8000
