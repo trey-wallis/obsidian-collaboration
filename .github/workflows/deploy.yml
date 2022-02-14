@@ -24,7 +24,7 @@ jobs:
       - name: Move server files
         uses: burnett01/rsync-deployments@5.2
         with:
-          switches: -avzr --delete --include="packages/obsidian-live-share-server/*" --exclude='packages/obsidian-live-share-server/node_modules'
+          switches: -avzr --delete --exclude='packages/obsidian-live-share-server/node_modules' --include="packages/obsidian-live-share-server/*"
           remote_path: /srv/server
           remote_host: ${{ secrets.SSH_HOST }}
           remote_user: ${{ secrets.SSH_USERNAME }}
@@ -32,7 +32,7 @@ jobs:
       - name: Move plugin files
         uses: burnett01/rsync-deployments@5.2
         with:
-          switches: -avzr --delete --include="packages/obsidian-live-share/main.js" --include="packages/obsidian-live-share/styles.css" --include="packages/obsidian-live-share/manifest.json" --include="packages/obsidian-live-share/data.json" --exclude='packages/obsidian-live-share/node_modules'
+          switches: -avzr --delete --include="packages/obsidian-live-share/main.js" --include="packages/obsidian-live-share/styles.css" --include="packages/obsidian-live-share/manifest.json" --include="packages/obsidian-live-share/data.json"
           remote_path: /srv/plugin
           remote_host: ${{ secrets.SSH_HOST }}
           remote_user: ${{ secrets.SSH_USERNAME }}
