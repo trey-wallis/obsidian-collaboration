@@ -19,7 +19,7 @@ jobs:
           npm install -g lerna
           lerna bootstrap
       - name: Create production file
-        run: npm run dev
+        run: npm run build
         working-directory: "packages/obsidian-live-share"
       - name: Move server files
         uses: burnett01/rsync-deployments@5.2
