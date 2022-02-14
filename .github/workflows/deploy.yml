@@ -24,8 +24,8 @@ jobs:
       - name: Move server files
         uses: burnett01/rsync-deployments@5.2
         with:
-          switches: -avzr --delete --include="packages/obsidian-live-share-server" --exclude='packages/obsidian-live-share-server/node_modules'
-          remote_path: /srv
+          switches: -avzr --delete --include="packages/obsidian-live-share-server/*" --exclude='packages/obsidian-live-share-server/node_modules'
+          remote_path: /srv/server
           remote_host: ${{ secrets.SSH_HOST }}
           remote_user: ${{ secrets.SSH_USERNAME }}
           remote_key: ${{ secrets.SSH_KEY }}
@@ -33,7 +33,7 @@ jobs:
         uses: burnett01/rsync-deployments@5.2
         with:
           switches: -avzr --delete --include="packages/obsidian-live-share/main.js" --include="packages/obsidian-live-share/styles.css" --include="packages/obsidian-live-share/manifest.json" --include="packages/obsidian-live-share/data.json" --exclude='packages/obsidian-live-share/node_modules'
-          remote_path: /srv/obsidian-live-share/
+          remote_path: /srv/plugin
           remote_host: ${{ secrets.SSH_HOST }}
           remote_user: ${{ secrets.SSH_USERNAME }}
           remote_key: ${{ secrets.SSH_KEY }}
@@ -45,4 +45,4 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            cd /srv/obsidian-live-share-server && ./run.sh
+            cd /srv/server && ./run.sh
