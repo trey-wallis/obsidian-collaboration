@@ -32,7 +32,7 @@ jobs:
       - name: Move plugin files
         uses: burnett01/rsync-deployments@5.2
         with:
-          switches: -avzr --delete --exclude="*" --include="main.js" --include="styles.css" --include="manifest.json"
+          switches: -avzr --delete --include="main.js" --include="styles.css" --include="manifest.json" --exclude="*"
           path: ./packages/obsidian-live-share/
           remote_path: /srv/plugin
           remote_host: ${{ secrets.SSH_HOST }}
