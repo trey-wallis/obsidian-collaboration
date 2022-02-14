@@ -5,5 +5,3 @@ kill -9 `pidof node`
 
 # Start a new instance
 node index.js &
-
-echo "Finished!"
