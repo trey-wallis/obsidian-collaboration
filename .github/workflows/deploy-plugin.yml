@@ -17,10 +17,10 @@ jobs:
           ref: dev
       - name: Install packages
         run: npm install
-        working-directory: "packages/obsidian-live-share"
+        working-directory: "plugin"
       - name: Create production file
         run: npm run build
-        working-directory: "packages/obsidian-live-share"
+        working-directory: "plugin"
       - name: Move plugin files
         uses: burnett01/rsync-deployments@5.2
         with:
