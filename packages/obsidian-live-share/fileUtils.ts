@@ -1,5 +1,6 @@
 const fs = require("fs");
 
+//ADD change
 //Compares and send changes on the lines that were changed
 //Save the lines that I changed
 export const getFileDiff = (oldFileData: string, newFileData: string) => {
