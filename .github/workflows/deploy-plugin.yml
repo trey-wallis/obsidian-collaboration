@@ -26,7 +26,7 @@ jobs:
         with:
           switches: -avzr --delete --include="main.js" --include="styles.css" --include="manifest.json" --exclude="*"
           path: ./packages/obsidian-live-share/
-          remote_path: /srv/vault/.obsidian/plugins/obsidian-live-share
+          remote_path: /home/trey/vault/.obsidian/plugins/obsidian-live-share
           remote_host: ${{ secrets.SSH_HOST }}
           remote_user: ${{ secrets.SSH_USERNAME }}
           remote_key: ${{ secrets.SSH_KEY }}
