@@ -28,7 +28,7 @@ jobs:
           remote_path: /srv
           remote_host: ${{ secrets.SSH_HOST }}
           remote_user: ${{ secrets.SSH_USERNAME }}
-          remote_pass: ${{ secrets.SSH_PASSWORD }}
+          remote_key: ${{ secrets.SSH_KEY }}
       - name: Move plugin files
         uses: burnett01/rsync-deployments@5.2
         with:
@@ -36,13 +36,13 @@ jobs:
           remote_path: /srv/obsidian-live-share/
           remote_host: ${{ secrets.SSH_HOST }}
           remote_user: ${{ secrets.SSH_USERNAME }}
-          remote_pass: ${{ secrets.SSH_PASSWORD }}
+          remote_key: ${{ secrets.SSH_KEY }}
       - name: Restart server
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
-          password: ${{ secrets.SSH_PASSWORD }}
+          key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
             cd /srv/obsidian-live-share-server && ./run.sh
