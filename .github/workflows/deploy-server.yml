@@ -4,7 +4,7 @@ on:
     branches:
       - dev
     paths:
-      - packages/obsidian-live-share-server/**
+      - server/**
 
 jobs:
   build:
@@ -19,7 +19,7 @@ jobs:
         uses: burnett01/rsync-deployments@5.2
         with:
           switches: -avzr --delete
-          path: ./packages/obsidian-live-share-server/
+          path: ./server/
           remote_path: /srv/server
           remote_host: ${{ secrets.SSH_HOST }}
           remote_user: ${{ secrets.SSH_USERNAME }}
