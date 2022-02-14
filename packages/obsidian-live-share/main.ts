@@ -51,7 +51,7 @@ export default class LiveSharePlugin extends Plugin {
 				if (this.userEdited) {
 					this.userEdited = false;
 					this.client.onFileModified(filePath, data);
-					console.log("Sending changes!!");
+					console.log("File modified by user! Send data.");
 				}
 			}
 		};

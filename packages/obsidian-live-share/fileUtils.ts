@@ -18,11 +18,6 @@ export const getFileDiff = (oldFileData: string, newFileData: string) => {
 	});
 	return diff;
 };
-
-//TODO - what happens when you sync up to the server??
-//you need to update your files unless the server is storing them
-//
-
 //In between each packet, compare line by line
 //If there is new data, write that line
 export const writeFileData = (
