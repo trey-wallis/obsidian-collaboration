@@ -1,0 +1,32 @@
+name: deploy
+on:
+  push:
+    branches:
+      - dev
+    paths:
+      - packages/obsidian-live-share/**
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: dev
+      - name: Install packages
+        run: npm install
+        working-directory: "packages/obsidian-live-share"
+      - name: Create production file
+        run: npm run build
+        working-directory: "packages/obsidian-live-share"
+      - name: Move plugin files
+        uses: burnett01/rsync-deployments@5.2
+        with:
+          switches: -avzr --delete --include="main.js" --include="styles.css" --include="manifest.json" --exclude="*"
+          path: ./packages/obsidian-live-share/
+          remote_path: /srv/plugin
+          remote_host: ${{ secrets.SSH_HOST }}
+          remote_user: ${{ secrets.SSH_USERNAME }}
+          remote_key: ${{ secrets.SSH_KEY }}
