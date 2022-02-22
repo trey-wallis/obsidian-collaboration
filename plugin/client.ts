@@ -5,7 +5,7 @@ const uuid = require("uuid");
 
 import { writeFileData, getFileDiff } from "./fileUtils";
 import { MAX_RECONNECTION_ATTEMPTS, CONNECTION_STATUS } from "./constants";
-import LiveSharePlugin from "main";
+import CollaborationPlugin from "main";
 
 interface ServerToClientEvents {
 	active_users: (data: { users: string[] }) => void;
@@ -29,8 +29,8 @@ interface ClientToServerEvents {
 	}) => void;
 }
 
-export default class LiveShareClient {
-	plugin: LiveSharePlugin;
+export default class CollaborationClient {
+	plugin: CollaborationPlugin;
 	connectionStatusBar: HTMLElement;
 	activeStatusBar: HTMLElement;
 	connectionStatusClass: string;
@@ -41,7 +41,7 @@ export default class LiveShareClient {
 	cursorLastTo: { line: number; ch: number };
 	oldFileData: string;
 
-	constructor(plugin: LiveSharePlugin) {
+	constructor(plugin: CollaborationPlugin) {
 		this.plugin = plugin;
 		this.connectionStatusBar = this.plugin.addStatusBarItem();
 		this.activeStatusBar = this.plugin.addStatusBarItem();

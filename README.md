@@ -1,9 +1,8 @@
-# Obsidian Live Share
+# Obsidian Collaboration
 
 ## About
 
-Obsidian Live Share allows you to have a Google Docs like experience with your friends. Live collaborate on files that and have changes propagate to other user's vault files.
-
+Obsidian Collaboration allows teams to collaborate directly in Obsidian on a vault saved on Google Drive. For each member that is collaborating, vault files are downloaded from Google Drive and stored in memory rather directly on the file system of a user. This allows files to be restricted to the workspace of a specific company.
 ## Built With
 
 - [Obsidian.md Plugin Template](https://github.com/obsidianmd/obsidian-sample-plugin)

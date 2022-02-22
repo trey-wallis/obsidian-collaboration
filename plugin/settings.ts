@@ -1,10 +1,10 @@
 import { App, PluginSettingTab, Setting } from "obsidian";
-import LiveSharePlugin from "main";
+import CollaborationPlugin from "main";
 
-export class LiveShareSettingsTab extends PluginSettingTab {
-	plugin: LiveSharePlugin;
+export class CollaborationSettingsTab extends PluginSettingTab {
+	plugin: CollaborationPlugin;
 
-	constructor(app: App, plugin: LiveSharePlugin) {
+	constructor(app: App, plugin: CollaborationPlugin) {
 		super(app, plugin);
 		this.plugin = plugin;
 	}

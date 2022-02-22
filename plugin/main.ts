@@ -1,28 +1,28 @@
 import { Plugin, MarkdownView } from "obsidian";
-import { LiveShareSettingsTab } from "./settings";
+import { CollaborationSettingsTab } from "./settings";
 
-import LiveShareClient from "./client";
-interface LiveShareSettings {
+import CollaborationClient from "./client";
+interface CollaborationSettings {
 	serverUrl: string;
 	vaultPath: string;
 	connectOnLoad: boolean;
 }
 
-const DEFAULT_SETTINGS: LiveShareSettings = {
+const DEFAULT_SETTINGS: CollaborationSettings = {
 	serverUrl: "http://localhost:8000",
 	vaultPath: "/path/to/my/vault",
 	connectOnLoad: false,
 };
 
-export default class LiveSharePlugin extends Plugin {
-	settings: LiveShareSettings;
-	client: LiveShareClient = null;
+export default class CollaborationPlugin extends Plugin {
+	settings: CollaborationSettings;
+	client: CollaborationClient = null;
 	userEdited: boolean;
 
 	async onload() {
 		await this.loadSettings();
 
-		this.client = new LiveShareClient(this);
+		this.client = new CollaborationClient(this);
 
 		this.addCommand({
 			id: "connect-to-live-share-server",
@@ -69,7 +69,7 @@ export default class LiveSharePlugin extends Plugin {
 			}
 		};
 
-		this.addSettingTab(new LiveShareSettingsTab(this.app, this));
+		this.addSettingTab(new CollaborationSettingsTab(this.app, this));
 
 		this.registerDomEvent(document, 'keydown', (evt: KeyboardEvent) => {
 			//When we type something set edited to true

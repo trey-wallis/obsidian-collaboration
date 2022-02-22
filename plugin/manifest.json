@@ -1,9 +1,9 @@
 {
-	"id": "obsidian-live-share",
-	"name": "Live share",
+	"id": "obsidian-collaboration",
+	"name": "Obsidian Collaboration",
 	"version": "0.0.1",
 	"minAppVersion": "0.12.0",
-	"description": "Live share vault files",
+	"description": "Collaborate on vault files",
 	"author": "Trey Wallis",
 	"authorUrl": "https://github.com/trey-wallis",
 	"isDesktopOnly": false

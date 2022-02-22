@@ -1,7 +1,7 @@
 {
-	"name": "obsidian-live-share",
+	"name": "obsidian-collaboration",
 	"version": "0.0.1",
-	"description": "Live share vault files",
+	"description": "Collaborate on vault files",
 	"main": "main.js",
 	"scripts": {
 		"dev": "node esbuild.config.mjs",
